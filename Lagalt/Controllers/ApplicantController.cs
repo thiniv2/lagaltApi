@@ -21,6 +21,11 @@ namespace Lagalt.Controllers
 			this.applicantRepo = repo;
 			_mapper = mapper;
 		}
+
+        /// <summary>
+        /// List all applicants
+        /// </summary>
+        /// <returns></returns>
 		[EnableCors("AllowAllHeaders")]
 		[HttpGet]
 		public async Task<ActionResult> Get()
@@ -29,6 +34,12 @@ namespace Lagalt.Controllers
 			if (applicants == null) return NotFound("No Applicants in storage");
 			return Ok(applicants);
 		}
+
+        /// <summary>
+        /// Get applicant by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		[EnableCors("AllowAllHeaders")]
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Applicant>> Get(int id)

@@ -27,6 +27,11 @@ namespace Lagalt.Controllers
 			if (projects == null) return NotFound("No Projects in storage");
 			return Ok(projects);
 		}
+
+        /// <summary>
+        /// List all project banners
+        /// </summary>
+        /// <returns></returns>
 		[EnableCors("AllowAllHeaders")]
 		[HttpGet("AllBanners")]
 		public async Task<ActionResult> GetBanners()
@@ -50,6 +55,11 @@ namespace Lagalt.Controllers
 			return Ok(project);
 		}
 
+        /// <summary>
+        /// Get projects banner by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		[HttpGet("{id}/Banner")]
 		[EnableCors("AllowAllHeaders")]
 		public async Task<ActionResult<ProjectBannerDTO>> GetBannerById(int id)
@@ -59,6 +69,11 @@ namespace Lagalt.Controllers
 			return Ok(project);
 		}
 
+        /// <summary>
+        /// Get projects details by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		[HttpGet("{id}/Details")]
 		[EnableCors("AllowAllHeaders")]
 		public async Task<ActionResult<ProjectDetailsDTO>> GetDetailsById(int id)
@@ -106,6 +121,12 @@ namespace Lagalt.Controllers
 			return Ok(projects);
 		}
 
+        /// <summary>
+        /// Update user in the project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="userIds"></param>
+        /// <returns></returns>
 		[HttpPut("{id}/users")]
         [EnableCors("AllowAllHeaders")]
         public async Task<IActionResult> UpdateProjectUsers(int id, List<string> userIds)
@@ -123,6 +144,11 @@ namespace Lagalt.Controllers
 				return NoContent();
 		}
 
+        /// <summary>
+        /// Lists the owner of the project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		[HttpGet("owner/{id}")]
 		[EnableCors("AllowAllHeaders")]
 		public async Task<ActionResult<List<ProjectBannerDTO>>> GetProjectsByOwnerId(string id)
@@ -137,7 +163,13 @@ namespace Lagalt.Controllers
 				return BadRequest(e);
 			}
 		}
-		//Not sure if this should be used instead of add applicant and delete applicant
+
+        /// <summary>
+        /// Update applicants in the project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="userIds"></param>
+        /// <returns></returns>
 		[HttpPut("{id}/applicants")]
 		[EnableCors("AllowAllHeaders")]
 		public async Task<IActionResult> UpdateProjectApplicants(int id, List<string> userIds)
