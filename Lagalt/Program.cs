@@ -13,8 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LagaltContext>(
-    o => o.UseNpgsql(builder.Configuration.GetConnectionString("SqlServer")));
-//o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+    o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+//o => o.UseNpgsql(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<ProjectRepo>();
@@ -32,7 +32,7 @@ builder.Services.AddCors(options =>
             corsbuilder.AllowAnyOrigin()
     .AllowAnyHeader()
     .AllowAnyMethod()
-    .WithOrigins("http://localhost:3000");
+    .WithOrigins("http://localhost:3000", "https://theprojectlagalt.web.app", "https://www.lagaltapi.somee.com");
         });
     });
 
@@ -40,7 +40,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:3000")
+        builder.WithOrigins("http://localhost:3000", "https://theprojectlagalt.web.app", "https://www.lagaltapi.somee.com")
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials();

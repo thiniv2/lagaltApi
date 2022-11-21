@@ -190,8 +190,3 @@ namespace Lagalt.Controllers
 
     }
 }
-
-
-// User Exists?
-// User register
-// User login
